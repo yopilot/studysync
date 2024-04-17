@@ -69,12 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         this.encryptedSharedPreferences = SettingsRepository.getEncryptedSharedPreferences(getApplicationContext());
         this.sharedPreferences = SettingsRepository.getSharedPreferences(getApplicationContext());
 
-        findViewById(R.id.button_sign_in).setOnClickListener(view -> signIn());
-        findViewById(R.id.button_privacy).setOnClickListener(view -> SettingsRepository.openWebViewActivity(
-                this,
-                getString(R.string.privacy),
-                SettingsRepository.APP_PRIVACY_URL
-        ));
+
 
         this.vtopHelper = new VTOPHelper(this, new VTOPHelper.Initiator() {
             @Override
