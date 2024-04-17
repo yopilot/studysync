@@ -270,14 +270,7 @@ public class ProfileFragment extends Fragment {
     /*
         App announcements
      */
-    private final ItemData[] announcementItems = {
-            new ItemData(
-                    R.drawable.ic_whats_new,
-                    "VIT Student is now Open Source!",
-                    "Click to view the source code.",
-                    context -> SettingsRepository.openBrowser(context, SettingsRepository.GITHUB_BASE_URL)
-            )
-    };
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -341,7 +334,6 @@ public class ProfileFragment extends Fragment {
         RecyclerView announcements = profileFragment.findViewById(R.id.recycler_view_announcements);
         RecyclerView profileGroups = profileFragment.findViewById(R.id.recycler_view_profile_groups);
 
-        announcements.setAdapter(new AnnouncementItemAdapter(announcementItems));
         profileGroups.setAdapter(new ProfileGroupAdapter(this.profileGroups, this.profileItems));
 
         return profileFragment;
