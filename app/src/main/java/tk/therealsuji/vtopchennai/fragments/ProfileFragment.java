@@ -169,46 +169,7 @@ public class ProfileFragment extends Fragment {
                     },
                     null
             ),
-            new ItemData(
-                    R.drawable.ic_privacy,
-                    R.string.privacy,
-                    context -> SettingsRepository.openWebViewActivity(
-                            context,
-                            context.getString(R.string.privacy),
-                            SettingsRepository.APP_PRIVACY_URL
-                    ),
-                    null
-            ),
-            new ItemData(
-                    R.drawable.ic_feedback,
-                    R.string.send_feedback,
-                    context -> {
-                        View bottomSheetLayout = View.inflate(context, R.layout.layout_bottom_sheet_feedback, null);
-                        bottomSheetLayout.findViewById(R.id.text_view_contact_developer).setOnClickListener(view -> SettingsRepository.openBrowser(context, SettingsRepository.DEVELOPER_BASE_URL));
-                        bottomSheetLayout.findViewById(R.id.text_view_open_issue).setOnClickListener(view -> SettingsRepository.openBrowser(context, SettingsRepository.GITHUB_ISSUE_URL));
-                        bottomSheetLayout.findViewById(R.id.text_view_request_feature).setOnClickListener(view -> SettingsRepository.openBrowser(context, SettingsRepository.GITHUB_FEATURE_URL));
 
-                        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                        bottomSheetDialog.setContentView(bottomSheetLayout);
-                        bottomSheetDialog.show();
-                    },
-                    null
-            ),
-            new ItemData(
-                    R.drawable.ic_share,
-                    R.string.share,
-                    context -> {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_SEND);
-                        intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.share_subject));
-                        intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_text, SettingsRepository.APP_BASE_URL));
-                        intent.setType("text/plain");
-
-                        Intent shareIntent = Intent.createChooser(intent, context.getString(R.string.share_title));
-                        context.startActivity(shareIntent);
-                    },
-                    null
-            ),
             new ItemData(
                     R.drawable.ic_sign_out,
                     R.string.sign_out,
