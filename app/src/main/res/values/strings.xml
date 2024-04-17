@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY app_name "VIT Student">]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY app_name "StudySync">]>
 
 <resources>
     <string name="app_name">&app_name;</string>
@@ -14,7 +14,7 @@
     <!-- MainActivity Strings -->
     <string name="home">Home</string>
     <string name="performance">Performance</string>
-    <string name="assignments">Assignments</string>
+    <string name="assignments">HomeWork</string>
     <string name="profile">Profile</string>
 
     <!-- HomeFragment Strings -->
@@ -25,7 +25,7 @@
     <string name="spotlight">Spotlight</string>
     <string name="overall_attendance">Overall Attendance</string>
     <string name="total_credits">Overall Credits Earned</string>
-    <string name="cgpa">CGPA</string>
+    <string name="cgpa">Percentage</string>
     <string name="days">Days of the week</string>
     <string name="sunday">Sunday</string>
     <string name="monday">Monday</string>
