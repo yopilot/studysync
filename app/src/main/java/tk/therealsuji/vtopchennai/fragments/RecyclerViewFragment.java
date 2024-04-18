@@ -56,7 +56,7 @@ public class RecyclerViewFragment extends Fragment {
 
                     @Override
                     public void onSuccess(@NonNull List<Receipt> receipts) {
-                        if (receipts.size() == 0) {
+                        if (receipts.isEmpty()) {
                             displayEmptyState(EmptyStateAdapter.TYPE_NO_DATA, null);
                             return;
                         }
@@ -83,7 +83,7 @@ public class RecyclerViewFragment extends Fragment {
 
                     @Override
                     public void onSuccess(@NonNull List<Spotlight> spotlight) {
-                        if (spotlight.size() == 0) {
+                        if (spotlight.isEmpty()) {
                             displayEmptyState(EmptyStateAdapter.TYPE_NO_DATA, null);
                             return;
                         }

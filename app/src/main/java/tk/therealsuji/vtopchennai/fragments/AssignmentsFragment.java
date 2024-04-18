@@ -322,7 +322,7 @@ public class AssignmentsFragment extends Fragment implements SwipeRefreshLayout.
 
                     @Override
                     public void onComplete() {
-                        if (assignments.size() == 0) {
+                        if (assignments.isEmpty()) {
                             assignmentGroups.setAdapter(new EmptyStateAdapter(EmptyStateAdapter.TYPE_NO_ASSIGNMENTS));
                         } else {
                             displayAssignments(assignments);
@@ -467,36 +467,56 @@ public class AssignmentsFragment extends Fragment implements SwipeRefreshLayout.
         this.swipeRefreshLayout.setProgressBackgroundColorSchemeColor(MaterialColors.getColor(this.swipeRefreshLayout, R.attr.colorPrimary));
         this.swipeRefreshLayout.setOnRefreshListener(this);
 
-        if (SettingsRepository.isMoodleSignedIn(requireContext())) {
-            AppDatabase.getInstance(requireContext().getApplicationContext())
-                    .assignmentsDao()
-                    .get()
-                    .subscribeOn(Schedulers.single())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new SingleObserver<List<Assignment>>() {
-                        @Override
-                        public void onSubscribe(@NonNull Disposable d) {
-                            compositeDisposable.add(d);
-                        }
+//        if (SettingsRepository.isMoodleSignedIn(requireContext())) {
+//            AppDatabase.getInstance(requireContext().getApplicationContext())
+//                    .assignmentsDao()
+//                    .get()
+//                    .subscribeOn(Schedulers.single())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(new SingleObserver<List<Assignment>>() {
+//                        @Override
+//                        public void onSubscribe(@NonNull Disposable d) {
+//                            compositeDisposable.add(d);
+//                        }
+//
+//                        @Override
+//                        public void onSuccess(@NonNull List<Assignment> assignments) {
+//                            if (assignments.isEmpty()) {
+//                                assignmentGroups.setAdapter(new EmptyStateAdapter(EmptyStateAdapter.TYPE_FETCHING_ASSIGNMENTS));
+//                            } else {
+//                                displayAssignments(assignments);
+//                            }
+//
+//                            displayAssignmentsPage();
+//                        }
+//
+//                        @Override
+//                        public void onError(@NonNull Throwable e) {
+//                        }
+//                    });
+//        } else {
+//            this.displaySignInPage();
+//        }
 
-                        @Override
-                        public void onSuccess(@NonNull List<Assignment> assignments) {
-                            if (assignments.size() == 0) {
-                                assignmentGroups.setAdapter(new EmptyStateAdapter(EmptyStateAdapter.TYPE_FETCHING_ASSIGNMENTS));
-                            } else {
-                                displayAssignments(assignments);
-                            }
+            // Existing code...
 
-                            displayAssignmentsPage();
-                        }
+            // Create hardcoded assignments
+            List<Assignment> hardcodedAssignments = new ArrayList<>();
+            Assignment englishAssignment = new Assignment();
+            englishAssignment.course = "English";
+            englishAssignment.title = "Write an essay on IPL";
+            englishAssignment.dueDate = new Date().getTime(); // Add a fake due date
+            hardcodedAssignments.add(englishAssignment);
 
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                        }
-                    });
-        } else {
-            this.displaySignInPage();
-        }
+            Assignment mathsAssignment = new Assignment();
+            mathsAssignment.course = "Maths";
+            mathsAssignment.title = "Complete exercise 9.2";
+            mathsAssignment.dueDate = new Date().getTime(); // Add a fake due date
+            hardcodedAssignments.add(mathsAssignment);
+
+            // Display hardcoded assignments
+            displayAssignments(hardcodedAssignments);
+
 
         return assignmentsFragment;
     }
