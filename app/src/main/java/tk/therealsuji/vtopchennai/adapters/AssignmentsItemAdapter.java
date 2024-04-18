@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -16,24 +17,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.color.MaterialColors;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import tk.therealsuji.vtopchennai.R;
 import tk.therealsuji.vtopchennai.fragments.AssignmentViewFragment;
 import tk.therealsuji.vtopchennai.models.Assignment;
 
-/**
- * ┬─── Assignments Hierarchy
- * ├─ {@link tk.therealsuji.vtopchennai.fragments.AssignmentsFragment}
- * ├─ {@link AssignmentsGroupAdapter}   - RecyclerView
- * ╰→ {@link AssignmentsItemAdapter}    - RecyclerView (Current File)
- */
 public class AssignmentsItemAdapter extends RecyclerView.Adapter<AssignmentsItemAdapter.ViewHolder> {
     List<Assignment> assignments;
 
+
+
     public AssignmentsItemAdapter(List<Assignment> assignments) {
         this.assignments = assignments;
+
+
+        // Create the first assignment
+        Assignment englishAssignment = new Assignment();
+        englishAssignment.course = "English";
+        englishAssignment.title = "Write an essay on IPL";
+        englishAssignment.dueDate = new Date().getTime(); // Add a fake due date
+        assignments.add(englishAssignment);
+
+        // Create the second assignment
+        Assignment mathsAssignment = new Assignment();
+        mathsAssignment.course = "Maths";
+        mathsAssignment.title = "Complete exercise 9.2";
+        mathsAssignment.dueDate = new Date().getTime(); // Add a fake due date
+        assignments.add(mathsAssignment);
+
     }
 
     @NonNull
@@ -81,23 +96,8 @@ public class AssignmentsItemAdapter extends RecyclerView.Adapter<AssignmentsItem
             }
 
             this.assignmentsItem.setOnClickListener(view -> {
-                AssignmentViewFragment assignmentViewFragment = new AssignmentViewFragment();
-                FragmentActivity fragmentActivity = (FragmentActivity) this.assignmentsItem.getContext();
-
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("assignment", assignmentsItem);
-
-                assignmentViewFragment.setArguments(bundle);
-
-                fragmentActivity.getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in_right, 0, 0, R.anim.slide_out_right)
-                        .add(R.id.frame_layout_fragment_container, assignmentViewFragment)
-                        .addToBackStack(null)
-                        .commit();
-
-                Bundle bottomNavigationVisibility = new Bundle();
-                bottomNavigationVisibility.putBoolean("isVisible", false);
-                fragmentActivity.getSupportFragmentManager().setFragmentResult("bottomNavigationVisibility", bottomNavigationVisibility);
+                // Display the assignment data when the item is clicked
+                Toast.makeText(view.getContext(), "Title: " + assignmentsItem.title + "\nCourse: " + assignmentsItem.course + "\nDue Date: " + new Date(assignmentsItem.dueDate), Toast.LENGTH_LONG).show();
             });
         }
     }

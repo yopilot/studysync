@@ -34,10 +34,7 @@
             android:name=".activities.LauncherActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".activities.LoginActivity"
@@ -49,7 +46,10 @@
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.VTOP"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
+            android:exported="true" ><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity
             android:name=".activities.WebViewActivity"
             android:theme="@style/Theme.VTOP"

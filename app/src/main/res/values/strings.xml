@@ -5,7 +5,7 @@
 
     <!-- LoginActivity Strings -->
     <string name="login_header">Login</string>
-    <string name="login_description">Sign in using your VTOP credentials</string>
+    <string name="login_description">Sign in</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
@@ -47,7 +47,7 @@
     <string name="average">Average: &lt;b>%f&lt;/b></string>
 
     <!-- AssignmentsFragment Strings -->
-    <string name="assignments_header">Your Assignments</string>
+    <string name="assignments_header">Your Homework Today</string>
     <string name="moodle_sign_in">Sign In to Moodle</string>
     <string name="moodle_login_description">Sign in using your Moodle credentials</string>
     <string name="no_due_date">No Due Date</string>
