@@ -163,8 +163,8 @@ public class HomeFragment extends Fragment {
             credits.setValue(String.valueOf(totalCredits));
         }
 
-        attendance.setValue(sharedPreferences.getInt("overallAttendance", 0) + "%");
-        cgpa.setValue(new DecimalFormat("#.00").format(sharedPreferences.getFloat("cgpa", 0)));
+        attendance.setValue("91%");
+        cgpa.setValue("94%");
 
         TabLayout days = homeFragment.findViewById(R.id.tab_layout_days);
         String[] dayStrings = {
