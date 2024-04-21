@@ -51,6 +51,7 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.View
     public void onBindViewHolder(@NonNull TimetableAdapter.ViewHolder holder, int position) {
         RecyclerView timetableView = (RecyclerView) holder.itemView;
 
+
         AppDatabase appDatabase = AppDatabase.getInstance(this.applicationContext);
         TimetableDao timetableDao = appDatabase.timetableDao();
         int day = holder.getAdapterPosition();
@@ -81,7 +82,63 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.View
                             status = TimetableItemAdapter.STATUS_PRESENT;
                         }
 
-                        timetableView.setAdapter(new TimetableItemAdapter(timetable, status));
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE203E".equals(item.courseCode)) {
+                                item.courseCode = "English";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE302L".equals(item.courseCode)) {
+                                item.courseCode = "Social Studies";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE302P".equals(item.courseCode)) {
+                                item.courseCode = "Maths Lab";
+                             }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE304L".equals(item.courseCode)) {
+                                item.courseCode = "Hindi";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE308L".equals(item.courseCode)) {
+                                item.courseCode = "Maths";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE308P".equals(item.courseCode)) {
+                                item.courseCode = "Chemistry Lab";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE315L".equals(item.courseCode)) {
+                                item.courseCode = "Chemistry";
+                             }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BMAT202P".equals(item.courseCode)) {
+                                item.courseCode = "Physics Lab";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BMAT202L".equals(item.courseCode)) {
+                                item.courseCode = "Physics";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BCSE302P".equals(item.courseCode)) {
+                                item.courseCode = "Biology Lab";
+                            }
+                        }
+                        for (Timetable.AllData item : timetable) {
+                            if ("BSTS102P".equals(item.courseCode)) {
+                                item.courseCode = "Biology";
+                            }
+                        }
+
+                            timetableView.setAdapter(new TimetableItemAdapter(timetable, status));
                     }
 
                     @Override

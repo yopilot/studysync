@@ -514,6 +514,18 @@ public class AssignmentsFragment extends Fragment implements SwipeRefreshLayout.
             mathsAssignment.dueDate = new Date().getTime(); // Add a fake due date
             hardcodedAssignments.add(mathsAssignment);
 
+            Assignment scienceAssignment = new Assignment();
+            scienceAssignment.course = "Science";
+            scienceAssignment.title = "Complete the lab experiment";
+            scienceAssignment.dueDate = new Date().getTime(); // Add a fake due date
+            hardcodedAssignments.add(scienceAssignment);
+
+            Assignment socialAssignment = new Assignment();
+            socialAssignment.course = "Social";
+            socialAssignment.title = "Read chapter 4";
+            socialAssignment.dueDate = new Date().getTime(); // Add a fake due date
+            hardcodedAssignments.add(socialAssignment);
+
             // Display hardcoded assignments
             displayAssignments(hardcodedAssignments);
 

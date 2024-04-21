@@ -33,22 +33,6 @@ public class AssignmentsItemAdapter extends RecyclerView.Adapter<AssignmentsItem
 
     public AssignmentsItemAdapter(List<Assignment> assignments) {
         this.assignments = assignments;
-
-
-        // Create the first assignment
-        Assignment englishAssignment = new Assignment();
-        englishAssignment.course = "English";
-        englishAssignment.title = "Write an essay on IPL";
-        englishAssignment.dueDate = new Date().getTime(); // Add a fake due date
-        assignments.add(englishAssignment);
-
-        // Create the second assignment
-        Assignment mathsAssignment = new Assignment();
-        mathsAssignment.course = "Maths";
-        mathsAssignment.title = "Complete exercise 9.2";
-        mathsAssignment.dueDate = new Date().getTime(); // Add a fake due date
-        assignments.add(mathsAssignment);
-
     }
 
     @NonNull

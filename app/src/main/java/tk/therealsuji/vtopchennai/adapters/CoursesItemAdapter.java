@@ -179,7 +179,7 @@ public class CoursesItemAdapter extends RecyclerView.Adapter<CoursesItemAdapter.
             for (int i = 0; i < courseItem.slots.size(); ++i) {
                 Chip slot = new Chip(this.courseItem.getContext());
                 slot.setChipIconResource(chipIconResource);
-                slot.setText(courseItem.slots.get(i));
+                slot.setText("Period " + (i+1));
 
                 slots.addView(slot);
             }
